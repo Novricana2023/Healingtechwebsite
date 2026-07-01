@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://healingtechlabs.com/sitemap.xml

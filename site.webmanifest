@@ -1,0 +1,50 @@
+{
+  "id": "/",
+  "name": "HealingTech Initiative",
+  "short_name": "HealingTech",
+  "description": "Support \u00b7 Empower \u00b7 Elevate \u2014 technology for healing, empowerment, and opportunity across Africa.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#1a2744",
+  "theme_color": "#e8943a",
+  "lang": "en",
+  "categories": [
+    "education",
+    "social",
+    "nonprofit"
+  ],
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,4 +1,15 @@
 User-agent: *
 Allow: /
 
+Disallow: /single
+Disallow: /faq
+Disallow: /technology
+Disallow: /solutions
+Disallow: /products
+Disallow: /portfolio
+Disallow: /industries
+Disallow: /service
+Disallow: /careers
+Disallow: /ai-assistant
+
 Sitemap: https://healingtechinitiative.org/sitemap.xml

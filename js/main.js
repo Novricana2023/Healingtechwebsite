@@ -56,6 +56,7 @@
     // Main carousel
     $(".carousel .owl-carousel").owlCarousel({
         autoplay: true,
+        autoHeight: false,
         animateOut: 'fadeOut',
         animateIn: 'fadeIn',
         items: 1,
@@ -122,11 +123,64 @@
     }, {offset: '80%'});
     
     
-    // Facts counter
-    $('[data-toggle="counter-up"]').counterUp({
-        delay: 10,
-        time: 2000
-    });
+    // Facts counter — animate when stats section enters view
+    function animateFactCounter(el, target, duration) {
+        var start = 0;
+        var startTime = null;
+        duration = duration || 2000;
+
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(start + (target - start) * eased);
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                el.textContent = target;
+            }
+        }
+
+        window.requestAnimationFrame(step);
+    }
+
+    function initFactsCounter() {
+        var section = document.querySelector('.facts');
+        if (!section) return;
+
+        var counters = section.querySelectorAll('[data-toggle="counter-up"]');
+        if (!counters.length) return;
+
+        var run = function () {
+            counters.forEach(function (el) {
+                if (el.getAttribute('data-counted') === 'true') return;
+                el.setAttribute('data-counted', 'true');
+                var target = parseInt(el.textContent, 10);
+                if (!isNaN(target)) {
+                    el.textContent = '0';
+                    animateFactCounter(el, target);
+                }
+            });
+        };
+
+        if ('IntersectionObserver' in window) {
+            var ran = false;
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting && !ran) {
+                        ran = true;
+                        run();
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.25 });
+            observer.observe(section);
+        } else {
+            run();
+        }
+    }
+
+    initFactsCounter();
 
 
     // Testimonials carousel
